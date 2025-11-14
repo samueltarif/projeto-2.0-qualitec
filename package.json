@@ -7,12 +7,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "node ./node_modules/nuxi/bin/nuxi.mjs prepare",
     "export:schema": "node scripts/export_db_schema.mjs --database qualitec_catalogos",
     "apply:schema:produtos": "node scripts/apply_db_schema.mjs --file db/qualitec_catalogos/produtos.sql",
     "apply:schema:produtos:reorder": "node scripts/run_sql.mjs --file db/qualitec_catalogos/produtos.reorder.sql",
     "import:manometros": "python scripts/import_produtos.py --file \"tabela manometros.csv\" --delimiter \";\" --encoding \"utf-8-sig\"",
     "import:supabase:csv": "node scripts/import_supabase_csv.mjs \"tabela manometros.csv\""
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.72",

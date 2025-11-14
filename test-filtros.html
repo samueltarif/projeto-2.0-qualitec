@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de Filtros</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .filter-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Teste de Filtros - API Debug</h1>
+    <div id="resultado"></div>
+
+    <script>
+        async function testarFiltros() {
+            const resultado = document.getElementById('resultado');
+            
+            try {
+                const response = await fetch('/api/produtos/distinct?categoria=Manômetros&limit=500');
+                const data = await response.json();
+                
+                resultado.innerHTML = '<h2>Dados retornados:</h2>';
+                
+                if (data.values) {
+                    // Verificar filtros específicos
+                    const tipoMedicao = data.values.tipo_medicao || [];
+                    const certificados = data.values.certificados || [];
+                    
+                    resultado.innerHTML += `
+                        <div class="filter-section">
+                            <h3>Tipo de Medição:</h3>
+                            <p>Quantidade: ${tipoMedicao.length}</p>
+                            <ul>
+                                ${tipoMedicao.map(item => `<li>${item} (${typeof item})</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    
+                    resultado.innerHTML += `
+                        <div class="filter-section">
+                            <h3>Certificados:</h3>
+                            <p>Quantidade: ${certificados.length}</p>
+                            <ul>
+                                ${certificados.map(item => `<li>${item} (${typeof item})</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    
+                    // Verificar se há problemas de encoding
+                    const allKeys = Object.keys(data.values);
+                    resultado.innerHTML += `
+                        <div class="filter-section">
+                            <h3>Todos os filtros disponíveis:</h3>
+                            <ul>
+                                ${allKeys.map(key => `<li>${key}: ${Array.isArray(data.values[key]) ? data.values[key].length + ' itens' : 'Não é array'}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    
+                    resultado.innerHTML += '<p class="success">✓ API funcionando corretamente</p>';
+                } else {
+                    resultado.innerHTML += '<p class="error">✗ Nenhum dado encontrado</p>';
+                }
+                
+            } catch (error) {
+                resultado.innerHTML = `<p class="error">Erro: ${error.message}</p>`;
+            }
+        }
+        
+        testarFiltros();
+    </script>
+</body>
+</html>

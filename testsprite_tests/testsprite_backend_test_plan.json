@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "test_product_catalog_filters_and_search",
+    "description": "Verify that the product catalog API endpoint returns filtered and searched product results correctly and within 1 second for a medium dataset."
+  },
+  {
+    "id": "TC002",
+    "title": "test_product_comparison_functionality",
+    "description": "Ensure the product comparison API endpoint allows adding and removing products without breaking the layout, especially on mobile devices."
+  },
+  {
+    "id": "TC003",
+    "title": "test_cart_modification_and_removal",
+    "description": "Test the cart API endpoint to confirm individual item removal does not affect other items and quantity adjustments work as expected."
+  },
+  {
+    "id": "TC004",
+    "title": "test_order_pdf_generation_and_email_sending",
+    "description": "Validate that the order PDF generation API creates PDFs with the observations block styled with green background, rounded borders, and correct padding, and that the email sending API sends the PDF as an attachment."
+  },
+  {
+    "id": "TC005",
+    "title": "test_user_authentication_and_profile_management",
+    "description": "Check the authentication API endpoints for login, user registration, and company registration to ensure server-side validation and secure data handling."
+  },
+  {
+    "id": "TC006",
+    "title": "test_multilanguage_support_and_i18n",
+    "description": "Verify that the internationalization API endpoints correctly serve translations in multiple languages using JSON locale files."
+  },
+  {
+    "id": "TC007",
+    "title": "test_cnpj_company_lookup_integration",
+    "description": "Test the API endpoint for company lookup by CNPJ to ensure it returns accurate company data based on the provided CNPJ."
+  },
+  {
+    "id": "TC008",
+    "title": "test_product_api_queries_and_schema",
+    "description": "Validate the product API endpoints for product queries, distinct values, and facet counts to ensure correct data retrieval and schema adherence."
+  },
+  {
+    "id": "TC009",
+    "title": "test_ui_effects_and_visual_components",
+    "description": "Ensure that the API endpoints supporting UI components with neon, shimmer, and ripple effects function correctly and deliver expected data for visual rendering."
+  },
+  {
+    "id": "TC010",
+    "title": "test_database_scripts_and_data_integrity",
+    "description": "Verify that the database scripts for products, companies, favorites, and users execute correctly and maintain data integrity for the API endpoints."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "header": {
+    "toggle_theme": "切换主题",
+    "profile": "个人资料",
+    "favorites": "收藏",
+    "language": "语言"
+  },
+  "login": {
+    "tabs": {
+      "login": "登录",
+      "register_company": "公司注册",
+      "register_user": "用户注册"
+    },
+    "help": {
+      "title": "帮助 — 用户注册",
+      "section_title": "发送商务邮件",
+      "support_message": "如有问题，请联系销售团队。我们会在一个工作日内回复。",
+      "recipient": "收件人：{email}"
+    },
+    "labels": {
+      "title": "标题",
+      "body": "邮件正文",
+      "email": "电子邮箱",
+      "cnpj": "CNPJ"
+    },
+    "buttons": {
+      "send_email": "发送邮件",
+      "close": "关闭",
+      "sign_in": "登录",
+      "about": "关于 Qualitec",
+      "help": "帮助"
+    },
+    "messages": {
+      "success_email_sent": "邮件已成功发送！",
+      "fill_subject_body": "请填写标题和正文。",
+      "error_sending_email": "发送邮件出错。",
+      "failed": "发送失败。"
+    }
+  },
+  "comparar": {
+    "actions": {
+      "delete": "删除",
+      "remove": "移除"
+    }
+  },
+  "general": {
+    "remove": "移除",
+    "delete": "删除",
+    "add": "添加"
+  }
+}

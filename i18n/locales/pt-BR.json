@@ -1,0 +1,51 @@
+{
+  "header": {
+    "toggle_theme": "Alternar tema",
+    "profile": "Perfil",
+    "favorites": "Favoritos",
+    "language": "Idioma"
+  },
+  "login": {
+    "tabs": {
+      "login": "Login",
+      "register_company": "Cadastro de Empresa",
+      "register_user": "Cadastro de Usuário"
+    },
+    "help": {
+      "title": "Ajuda — Cadastro de Usuário",
+      "section_title": "Enviar email comercial",
+      "support_message": "Qualquer dúvidas entre em contato com o nosso setor comercial, respondemos em até 1 dia útil",
+      "recipient": "Destinatário: {email}"
+    },
+    "labels": {
+      "title": "Título",
+      "body": "Corpo do email",
+      "email": "Email",
+      "cnpj": "CNPJ"
+    },
+    "buttons": {
+      "send_email": "ENVIAR E-MAIL",
+      "close": "Fechar",
+      "sign_in": "Entrar",
+      "about": "Sobre a Qualitec",
+      "help": "Ajuda"
+    },
+    "messages": {
+      "success_email_sent": "Email enviado com sucesso!",
+      "fill_subject_body": "Preencha título e corpo.",
+      "error_sending_email": "Erro ao enviar.",
+      "failed": "Falha ao enviar."
+    }
+  },
+  "comparar": {
+    "actions": {
+      "delete": "Excluir",
+      "remove": "Remover"
+    }
+  },
+  "general": {
+    "remove": "Remover",
+    "delete": "Excluir",
+    "add": "Adicionar"
+  }
+}

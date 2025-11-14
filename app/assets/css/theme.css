@@ -1,0 +1,92 @@
+/* Global Theme Variables and Element Styles */
+:root {
+  /* Base */
+  --bg: #f7f9fc; /* ice gray */
+  --surface: #ffffff; /* card surface */
+  --card: rgba(255, 255, 255, 0.85);
+  --text: #1f2937; /* slate-800 */
+  --muted: #6b7280; /* gray-500 */
+  --border: #e5e7eb; /* gray-200 */
+  --ring: #93c5fd; /* blue-300 */
+  --placeholder: #9ca3af; /* gray-400 */
+  --input-bg: #f3f4f6; /* gray-100 */
+
+  /* Brand */
+  --primary: #2563eb; /* blue-600 */
+  --primary-foreground: #ffffff;
+  --secondary: #7c3aed; /* violet-600 */
+  --secondary-foreground: #ffffff;
+}
+
+.dark {
+  --bg: #0f1115; /* charcoal */
+  --surface: #141821; /* deep slate */
+  --card: rgba(20, 24, 33, 0.85);
+  --text: #e5e7eb; /* gray-200 */
+  --muted: #94a3b8; /* slate-400 */
+  --border: #2b3340; /* slate-700 */
+  --ring: #60a5fa; /* blue-400 */
+  --placeholder: #94a3b8; /* slate-400 */
+  --input-bg: #1b2130; /* slate-800-ish */
+
+  --primary: #3b82f6; /* blue-500 */
+  --primary-foreground: #0b0e14; /* near charcoal for contrasts */
+  --secondary: #8b5cf6; /* violet-500 */
+  --secondary-foreground: #0b0e14;
+}
+
+/* Global background and text */
+html, body, #__nuxt, #__app {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Cards */
+.card {
+  background-color: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.btn {
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Tabs */
+.tab-border {
+  border-color: var(--border);
+}
+
+/* Modals */
+.modal {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+/* Inputs */
+.input-base {
+  background-color: var(--input-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+.input-base::placeholder {
+  color: var(--placeholder);
+}
+
+/* Labels and text helpers */
+.label {
+  color: var(--muted);
+}

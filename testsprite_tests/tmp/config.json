@@ -1,0 +1,15 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3001",
+  "executionArgs": {
+    "projectName": "template-nuxt-supabase-tailwind-master",
+    "projectPath": "c:\\Users\\Vendas2\\Desktop\\template-nuxt-supabase-tailwind-master",
+    "testIds": [],
+    "additionalInstruction": "Focus on frontend security: prevent code leakage, block unauthorized access to server APIs (list-tables, table-schema, test-connection), ensure runtimeConfig secrets not exposed, enforce CORS and auth where appropriate.",
+    "envs": {
+      "API_KEY": "sk-user-6tq_Umh8yFm6t0ITfPz_PcSkUtjK8Sf_YheQ9lXJF9V7-FuOBGMtkOOsNbFnYdwwZr6GKpBgTwXJ-TM8TBmGrK2eMBRafLQmb4uul6Qgbs3jEZmynvLwWQ9dpUYX01H-DOM"
+    }
+  }
+}

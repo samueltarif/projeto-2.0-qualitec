@@ -1,0 +1,845 @@
+import { defineComponent, computed, ref, mergeProps, unref, withCtx, createTextVNode, createVNode, resolveComponent, createBlock, openBlock, toDisplayString, resolveDirective, useSSRContext } from 'vue';
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderClass, ssrRenderList, ssrRenderAttr, ssrRenderSlot, ssrInterpolate, ssrRenderStyle } from 'vue/server-renderer';
+import { _ as _export_sfc, b as useRuntimeConfig, i as __nuxt_component_1, U as UiModal, R as RainbowButton, h as useState, e as __nuxt_component_0$1, g as __nuxt_component_1$1, f as __nuxt_component_0$1$1, d as cn } from './server.mjs';
+import { useRouter } from 'vue-router';
+import { useColorMode } from '@vueuse/core';
+import '../_/nitro.mjs';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:path';
+import 'node:crypto';
+import 'node:url';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/utils';
+import '@supabase/ssr';
+
+const activeClass = "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500";
+const inactiveClass = "border-transparent hover:border-gray-300 hover:text-gray-600 dark:hover:text-gray-300 text-gray-500 dark:text-gray-400";
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+  __name: "TabButton",
+  __ssrInlineRender: true,
+  props: {
+    id: {},
+    target: {},
+    ariaControls: {},
+    selected: { type: Boolean, default: false },
+    label: {},
+    attention: { type: Boolean, default: false }
+  },
+  setup(__props) {
+    const props = __props;
+    const controls = computed(() => props.ariaControls || props.target.replace("#", ""));
+    const ariaControls = computed(() => controls.value);
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<button${ssrRenderAttrs(mergeProps({
+        class: ["inline-block rounded-t-lg border-b-2 p-4", [__props.selected ? activeClass : inactiveClass, __props.attention ? "attention-anim" : ""]],
+        id: __props.id,
+        "data-tabs-target": __props.target,
+        type: "button",
+        role: "tab",
+        "aria-controls": ariaControls.value,
+        "aria-selected": __props.selected ? "true" : "false"
+      }, _attrs))} data-v-f93ddd85>`);
+      ssrRenderSlot(_ctx.$slots, "default", {}, () => {
+        _push(`${ssrInterpolate(__props.label)}`);
+      }, _push, _parent);
+      _push(`</button>`);
+    };
+  }
+});
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/ui/TabButton.vue");
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+};
+const __nuxt_component_0 = /* @__PURE__ */ Object.assign(_export_sfc(_sfc_main$8, [["__scopeId", "data-v-f93ddd85"]]), { __name: "UiTabButton" });
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+  __name: "ShimmerButton",
+  __ssrInlineRender: true,
+  props: {
+    shimmerColor: { default: "#ffffff" },
+    shimmerSize: { default: "0.05em" },
+    borderRadius: { default: "100px" },
+    shimmerDuration: { default: "3s" },
+    background: { default: "rgba(0, 0, 0, 1)" },
+    class: {}
+  },
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<button${ssrRenderAttrs(mergeProps({
+        class: unref(cn)(
+          "group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap border border-[var(--border)] px-6 py-3 text-white [background:var(--bg)] [border-radius:var(--radius)]",
+          "transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px",
+          _ctx.$props.class
+        ),
+        style: {
+          "--spread": "90deg",
+          "--shimmer-color": __props.shimmerColor,
+          "--radius": __props.borderRadius,
+          "--speed": __props.shimmerDuration,
+          "--cut": __props.shimmerSize,
+          "--bg": __props.background
+        }
+      }, _attrs))} data-v-95ca9795><div class="${ssrRenderClass(unref(cn)("-z-30 blur-[2px]", "absolute inset-0 overflow-visible [container-type:size]"))}" data-v-95ca9795><div class="animate-shimmer-btn-shimmer-slide absolute inset-0 h-[100cqh] [aspect-ratio:1] [border-radius:0] [mask:none]" data-v-95ca9795><div class="animate-shimmer-btn-spin-around absolute -inset-full w-auto rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] [translate:0_0]" data-v-95ca9795></div></div></div>`);
+      ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+      _push(`<div class="${ssrRenderClass(
+        unref(cn)(
+          "insert-0 absolute size-full",
+          "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#ffffff1f]",
+          // transition 
+          "transform-gpu transition-all duration-300 ease-in-out",
+          // on hover 
+          "group-hover:shadow-[inset_0_-6px_10px_#ffffff3f]",
+          // on click 
+          "group-active:shadow-[inset_0_-10px_10px_#ffffff3f]"
+        )
+      )}" data-v-95ca9795></div><div class="absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" data-v-95ca9795></div></button>`);
+    };
+  }
+});
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/ShimmerButton.vue");
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+};
+const ShimmerButton = /* @__PURE__ */ Object.assign(_export_sfc(_sfc_main$7, [["__scopeId", "data-v-95ca9795"]]), { __name: "ShimmerButton" });
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+  __name: "AboutQualitecButton",
+  __ssrInlineRender: true,
+  props: {
+    label: { default: void 0 },
+    to: {},
+    href: {},
+    class: {},
+    duration: { default: 2500 },
+    borderWidth: { default: 2 },
+    borderRadius: { default: 8 },
+    blur: { default: 4 }
+  },
+  emits: ["click"],
+  setup(__props, { emit: __emit }) {
+    const emit = __emit;
+    const props = __props;
+    const router = useRouter();
+    const labelText = computed(() => props.label ?? "Sobre a Qualitec");
+    function handleClick() {
+      if (props.to) {
+        router.push(props.to);
+      } else if (props.href) ;
+      else {
+        emit("click");
+      }
+    }
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(RainbowButton, mergeProps({
+        class: unref(cn)("h-11 min-w-36 !text-black dark:!text-white", _ctx.$props.class),
+        onClick: handleClick
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${ssrInterpolate(labelText.value)}`);
+          } else {
+            return [
+              createTextVNode(toDisplayString(labelText.value), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+});
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/AboutQualitecButton.vue");
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+};
+const AboutQualitecButton = Object.assign(_sfc_main$6, { __name: "AboutQualitecButton" });
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  __name: "WelcomeOverlay",
+  __ssrInlineRender: true,
+  props: {
+    visible: { type: Boolean, default: false },
+    message: {},
+    subtext: {}
+  },
+  setup(__props) {
+    const props = __props;
+    const visible = props.visible;
+    const message = computed(() => props.message ?? "Seja Bem-Vindo!");
+    const subtext = computed(() => props.subtext ?? "Login realizado com sucesso.");
+    return (_ctx, _push, _parent, _attrs) => {
+      if (unref(visible)) {
+        _push(`<div${ssrRenderAttrs(mergeProps({ class: "fixed inset-0 z-50 grid place-items-center bg-black/50 backdrop-blur-sm" }, _attrs))} data-v-4ea6d2ac><div class="relative w-[90vw] max-w-md rounded-2xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-neutral-900/80 p-6 shadow-xl" data-v-4ea6d2ac><div class="flex items-center justify-center gap-3" data-v-4ea6d2ac><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-v-4ea6d2ac><defs data-v-4ea6d2ac><linearGradient id="gradCheck" x1="0" x2="1" y1="0" y2="1" data-v-4ea6d2ac><stop offset="0%" stop-color="#3B82F6" data-v-4ea6d2ac></stop><stop offset="50%" stop-color="#A855F7" data-v-4ea6d2ac></stop><stop offset="100%" stop-color="#10B981" data-v-4ea6d2ac></stop></linearGradient></defs><circle cx="12" cy="12" r="10" stroke="url(#gradCheck)" stroke-width="1.5" data-v-4ea6d2ac></circle><path d="M16 9l-5.5 6L8 12.5" stroke="url(#gradCheck)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-v-4ea6d2ac></path></svg><h2 class="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-fuchsia-500 to-emerald-400" data-v-4ea6d2ac>${ssrInterpolate(message.value)}</h2></div><p class="mt-3 text-center text-sm text-neutral-800 dark:text-neutral-200" data-v-4ea6d2ac>${ssrInterpolate(subtext.value)}</p><div class="mt-4 flex items-center justify-center" data-v-4ea6d2ac><span class="inline-block h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-fuchsia-500 to-emerald-400" data-v-4ea6d2ac></span></div></div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+    };
+  }
+});
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/WelcomeOverlay.vue");
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+};
+const WelcomeOverlay = /* @__PURE__ */ Object.assign(_export_sfc(_sfc_main$5, [["__scopeId", "data-v-4ea6d2ac"]]), { __name: "WelcomeOverlay" });
+const aboutPdfUrl = "/arquivos%20pdf/Apresenta%C3%A7%C3%A3o%20Qualitec%202024%20-%20Impressa%20_%20WEB.pdf";
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+  __name: "LoginForm",
+  __ssrInlineRender: true,
+  emits: ["user-not-registered"],
+  setup(__props, { emit: __emit }) {
+    const user = ref({
+      email: "",
+      cnpj: ""
+    });
+    const showWelcome = ref(false);
+    useRouter();
+    const showAbout = ref(false);
+    const openAbout = () => {
+      showAbout.value = true;
+    };
+    const closeAbout = () => {
+      showAbout.value = false;
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_UiInput = __nuxt_component_0$1;
+      const _component_ClientOnly = __nuxt_component_0$1$1;
+      resolveDirective("mask");
+      _push(`<form${ssrRenderAttrs(_attrs)}><div class="mb-4"><label for="email" class="label">Email</label>`);
+      _push(ssrRenderComponent(_component_UiInput, {
+        id: "email",
+        type: "email",
+        modelValue: user.value.email,
+        "onUpdate:modelValue": ($event) => user.value.email = $event,
+        placeholder: "Email",
+        required: ""
+      }, null, _parent));
+      _push(`</div><div class="mb-6"><label for="cnpj-login" class="label">CNPJ</label>`);
+      _push(ssrRenderComponent(_component_ClientOnly, null, {}, _parent));
+      _push(`</div><div class="mt-2 flex justify-center">`);
+      _push(ssrRenderComponent(ShimmerButton, {
+        type: "submit",
+        class: "h-11 px-5"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Entrar`);
+          } else {
+            return [
+              createTextVNode("Entrar")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div><div class="mt-3 flex justify-center">`);
+      _push(ssrRenderComponent(AboutQualitecButton, {
+        class: "w-auto",
+        onClick: openAbout
+      }, null, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(WelcomeOverlay, { visible: showWelcome.value }, null, _parent));
+      _push(ssrRenderComponent(UiModal, {
+        visible: showAbout.value,
+        onClose: closeAbout,
+        panelClass: "w-[92vw] h-[80vh] p-0 overflow-hidden",
+        "aria-label": "Apresentação Qualitec"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<object${ssrRenderAttr("data", aboutPdfUrl)} type="application/pdf" class="w-full h-full"${_scopeId}><iframe${ssrRenderAttr("src", aboutPdfUrl)} class="w-full h-full"${_scopeId}></iframe> Seu navegador não suporta visualização embutida de PDF. <a${ssrRenderAttr("href", aboutPdfUrl)} target="_blank" rel="noopener"${_scopeId}>Abrir o PDF em nova aba</a>. </object>`);
+          } else {
+            return [
+              createVNode("object", {
+                data: aboutPdfUrl,
+                type: "application/pdf",
+                class: "w-full h-full"
+              }, [
+                createVNode("iframe", {
+                  src: aboutPdfUrl,
+                  class: "w-full h-full"
+                }),
+                createTextVNode(" Seu navegador não suporta visualização embutida de PDF. "),
+                createVNode("a", {
+                  href: aboutPdfUrl,
+                  target: "_blank",
+                  rel: "noopener"
+                }, "Abrir o PDF em nova aba"),
+                createTextVNode(". ")
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</form>`);
+    };
+  }
+});
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/LoginForm.vue");
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+};
+const __nuxt_component_2 = Object.assign(_sfc_main$4, { __name: "LoginForm" });
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "RegisterForm",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const company = ref({
+      cnpj: "",
+      razao_social: "",
+      email: "",
+      filial: ""
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ClientOnly = __nuxt_component_0$1$1;
+      const _component_UiInput = __nuxt_component_0$1;
+      resolveDirective("mask");
+      _push(`<form${ssrRenderAttrs(_attrs)}><div class="grid grid-cols-2 gap-4"><div>`);
+      _push(ssrRenderComponent(_component_ClientOnly, null, {}, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: company.value.razao_social,
+        "onUpdate:modelValue": ($event) => company.value.razao_social = $event,
+        placeholder: "Razão Social"
+      }, null, _parent));
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: company.value.email,
+        "onUpdate:modelValue": ($event) => company.value.email = $event,
+        placeholder: "Email",
+        class: "col-span-2"
+      }, null, _parent));
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: company.value.filial,
+        "onUpdate:modelValue": ($event) => company.value.filial = $event,
+        placeholder: "Filial",
+        class: "col-span-2"
+      }, null, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(ShimmerButton, {
+        type: "submit",
+        class: "w-full mt-4"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Cadastrar Empresa`);
+          } else {
+            return [
+              createTextVNode("Cadastrar Empresa")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</form>`);
+    };
+  }
+});
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/RegisterForm.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const __nuxt_component_3 = Object.assign(_sfc_main$3, { __name: "RegisterForm" });
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  __name: "UserRegisterForm",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const user = ref({
+      email: "",
+      cnpj: ""
+    });
+    const companyName = ref("");
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_UiInput = __nuxt_component_0$1;
+      const _component_ClientOnly = __nuxt_component_0$1$1;
+      resolveDirective("mask");
+      _push(`<form${ssrRenderAttrs(_attrs)}><div class="grid grid-cols-2 gap-4">`);
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: user.value.email,
+        "onUpdate:modelValue": ($event) => user.value.email = $event,
+        placeholder: "Email",
+        class: "col-span-2"
+      }, null, _parent));
+      _push(ssrRenderComponent(_component_ClientOnly, null, {}, _parent));
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: companyName.value,
+        "onUpdate:modelValue": ($event) => companyName.value = $event,
+        placeholder: "Razão Social",
+        class: "col-span-2",
+        readonly: ""
+      }, null, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(ShimmerButton, {
+        type: "submit",
+        class: "w-full mt-4"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Cadastrar Usuário`);
+          } else {
+            return [
+              createTextVNode("Cadastrar Usuário")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</form>`);
+    };
+  }
+});
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/UserRegisterForm.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const __nuxt_component_4 = Object.assign(_sfc_main$2, { __name: "UserRegisterForm" });
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "UiSendEmailModal",
+  __ssrInlineRender: true,
+  props: {
+    recipient: {},
+    showCloseButton: { type: Boolean }
+  },
+  emits: ["close", "sent"],
+  setup(__props, { emit: __emit }) {
+    const props = __props;
+    const emit = __emit;
+    const subject = ref("");
+    const message = ref("");
+    const loading = ref(false);
+    const feedback = ref(null);
+    const emitClose = () => emit("close");
+    const onSend = async () => {
+      feedback.value = null;
+      if (!subject.value.trim() || !message.value.trim()) {
+        feedback.value = { success: false, message: "Preencha o assunto e a mensagem" };
+        emit("sent", feedback.value);
+        return;
+      }
+      loading.value = true;
+      try {
+        const res = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-key": "qualitec-admin-2024"
+          },
+          body: JSON.stringify({ subject: subject.value, message: message.value, to: props.recipient })
+        });
+        const data = await res.json();
+        if (data.success) {
+          feedback.value = { success: true, message: "E-mail enviado com sucesso" };
+          subject.value = "";
+          message.value = "";
+        } else {
+          feedback.value = { success: false, message: data.message || "Falha ao enviar e-mail" };
+        }
+        emit("sent", feedback.value);
+      } catch (e) {
+        feedback.value = { success: false, message: e?.message || "Erro ao enviar e-mail" };
+        emit("sent", feedback.value);
+      } finally {
+        loading.value = false;
+      }
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_UiInput = __nuxt_component_0$1;
+      const _component_UiTextarea = __nuxt_component_1$1;
+      const _component_RainbowButton = resolveComponent("RainbowButton");
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "mt-2 modal p-3 text-sm" }, _attrs))}><p class="font-semibold">Precisa de ajuda?</p><ul class="mt-1 list-disc pl-5"><li>Envie um e-mail para nossa equipe.</li></ul><div class="mt-3 rounded border p-3 space-y-3" style="${ssrRenderStyle({ borderColor: "var(--border)" })}"><p class="mb-2 font-semibold">Enviar e-mail</p><div class="mb-2"><label class="mb-1 block text-xs label">Assunto</label>`);
+      _push(ssrRenderComponent(_component_UiInput, {
+        modelValue: subject.value,
+        "onUpdate:modelValue": ($event) => subject.value = $event,
+        placeholder: "Assunto"
+      }, null, _parent));
+      _push(`</div><div class="mb-2"><label class="mb-1 block text-xs label">Mensagem</label>`);
+      _push(ssrRenderComponent(_component_UiTextarea, {
+        modelValue: message.value,
+        "onUpdate:modelValue": ($event) => message.value = $event,
+        rows: 4
+      }, null, _parent));
+      _push(`</div><div class="mb-2 text-xs" style="${ssrRenderStyle({ color: "var(--muted)" })}">Destinatário: ${ssrInterpolate(__props.recipient)}</div><div class="mt-2 flex justify-center">`);
+      _push(ssrRenderComponent(_component_RainbowButton, {
+        type: "button",
+        onClick: onSend,
+        disabled: loading.value,
+        class: "inline-flex items-center gap-2 h-11 px-5 rounded-full bg-none bg-black !text-white hover:bg-neutral-900 shadow-sm hover:shadow-md before:hidden",
+        "aria-label": "Enviar e-mail"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            if (!loading.value) {
+              _push2(`<span class="i-lucide-send"${_scopeId}></span>`);
+            } else {
+              _push2(`<span class="i-lucide-loader-2 animate-spin"${_scopeId}></span>`);
+            }
+            _push2(`<span class="font-medium"${_scopeId}>${ssrInterpolate(loading.value ? "..." : "Enviar e-mail")}</span>`);
+          } else {
+            return [
+              !loading.value ? (openBlock(), createBlock("span", {
+                key: 0,
+                class: "i-lucide-send"
+              })) : (openBlock(), createBlock("span", {
+                key: 1,
+                class: "i-lucide-loader-2 animate-spin"
+              })),
+              createVNode("span", { class: "font-medium" }, toDisplayString(loading.value ? "..." : "Enviar e-mail"), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div>`);
+      if (feedback.value) {
+        _push(`<div class="${ssrRenderClass([feedback.value.success ? "text-green-700" : "text-red-700", "mt-2 text-xs"])}">${ssrInterpolate(feedback.value.message)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
+      if (__props.showCloseButton) {
+        _push(`<div class="mt-3 flex justify-center">`);
+        _push(ssrRenderComponent(_component_RainbowButton, {
+          type: "button",
+          onClick: emitClose,
+          class: "!text-black dark:!text-white"
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`Fechar`);
+            } else {
+              return [
+                createTextVNode("Fechar")
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
+    };
+  }
+});
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/ui/UiSendEmailModal.vue");
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+};
+const UiSendEmailModal = Object.assign(_sfc_main$1, { __name: "UiSendEmailModal" });
+const useAuthFlow = () => {
+  const activeTab = useState("auth:activeTab", () => "login");
+  const showRegisterHint = useState("auth:showRegisterHint", () => false);
+  const goToRegisterUser = () => {
+    activeTab.value = "register-user";
+    showRegisterHint.value = true;
+    setTimeout(() => {
+      const el = (void 0).getElementById("register-user-tab");
+      if (el) {
+        el.click();
+      }
+    }, 0);
+  };
+  const closeRegisterHint = () => {
+    showRegisterHint.value = false;
+  };
+  return {
+    activeTab,
+    showRegisterHint,
+    goToRegisterUser,
+    closeRegisterHint
+  };
+};
+const googleReviewUrl = "https://www.google.com/search?q=qualitec+fazendo+de+monte+alegre+367&rlz=1C1GCEA_enBR1169BR1169&oq=qualitec+fazendo+de+monte+alegre+367&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiABBiiBDIKCAIQABiABBiiBDIHCAMQABjvBTIKCAQQABiiBBiJBTIKCAUQABiABBiiBNIBCTg4NjcwajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x94ce580092c976ef:0xb1237dda7e083517,3,,,,";
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "login",
+  __ssrInlineRender: true,
+  setup(__props) {
+    computed(() => useColorMode().value === "dark");
+    const showUserHelp = ref(false);
+    const toggleUserHelp = () => {
+      showUserHelp.value = !showUserHelp.value;
+    };
+    const highlightRegisterUser = ref(false);
+    const onUserNotRegistered = () => {
+      highlightRegisterUser.value = true;
+      showRegisterHint.value = true;
+      goToRegisterUser();
+      setTimeout(() => {
+        highlightRegisterUser.value = false;
+      }, 1600);
+    };
+    const { activeTab, showRegisterHint, goToRegisterUser, closeRegisterHint } = useAuthFlow();
+    function onGoToRegisterClick() {
+      goToRegisterUser();
+      closeRegisterHint();
+    }
+    function onHelpSent(payload) {
+      if (payload?.success) {
+        showUserHelp.value = false;
+      }
+    }
+    const runtimeConfig = useRuntimeConfig();
+    const salesEmail = runtimeConfig.public?.salesEmail || "vendas2@qualitec.ind.br";
+    const rating = ref(0);
+    const hoverRating = ref(0);
+    const showRateFeedback = ref(false);
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_UiTabButton = __nuxt_component_0;
+      const _component_UiButton = __nuxt_component_1;
+      const _component_LoginForm = __nuxt_component_2;
+      const _component_RegisterForm = __nuxt_component_3;
+      const _component_UserRegisterForm = __nuxt_component_4;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "relative flex h-screen flex-col items-center justify-center" }, _attrs))} data-v-8c4db47f><div class="absolute inset-0 z-0 pointer-events-none bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:bg-gradient-to-br dark:from-neutral-900 dark:via-neutral-800 dark:to-blue-900 transition-colors" data-v-8c4db47f></div><div class="z-[1] w-full max-w-md p-8 card" data-v-8c4db47f><div class="mb-4 border-b tab-border" data-v-8c4db47f><ul class="-mb-px flex flex-nowrap items-center text-center text-sm font-medium" id="myTab" data-tabs-toggle="#myTabContent" role="tablist" data-v-8c4db47f><li class="mr-2" role="presentation" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UiTabButton, {
+        id: "login-tab",
+        target: "#login",
+        "aria-controls": "login",
+        selected: unref(activeTab) === "login",
+        onClick: ($event) => activeTab.value = "login"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Login`);
+          } else {
+            return [
+              createTextVNode("Login")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li class="mr-2" role="presentation" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UiTabButton, {
+        id: "register-tab",
+        target: "#register",
+        "aria-controls": "register",
+        selected: unref(activeTab) === "register",
+        onClick: ($event) => activeTab.value = "register"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Cadastro de Empresa`);
+          } else {
+            return [
+              createTextVNode("Cadastro de Empresa")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li class="mr-2" role="presentation" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UiTabButton, {
+        id: "register-user-tab",
+        target: "#register-user",
+        "aria-controls": "register-user",
+        selected: unref(activeTab) === "register-user",
+        onClick: ($event) => activeTab.value = "register-user",
+        attention: highlightRegisterUser.value
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Cadastro de Usuário`);
+          } else {
+            return [
+              createTextVNode("Cadastro de Usuário")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li class="mr-2" role="presentation" data-v-8c4db47f><div class="inline-flex items-center" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UiButton, {
+        variant: "outline",
+        size: "xs",
+        class: "ml-2",
+        type: "button",
+        onClick: toggleUserHelp
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Ajuda`);
+          } else {
+            return [
+              createTextVNode("Ajuda")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div></li></ul>`);
+      _push(ssrRenderComponent(UiModal, {
+        visible: showUserHelp.value,
+        "with-backdrop": true,
+        "close-on-backdrop": true,
+        "close-on-esc": true,
+        "show-close-button": true,
+        "close-button-label": "Fechar",
+        "aria-label": "Ajuda — Enviar email",
+        panelClass: "w-full max-w-md p-4 bg-white/95 dark:bg-neutral-900/90 backdrop-blur-md",
+        onClose: toggleUserHelp
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(UiSendEmailModal, {
+              recipient: unref(salesEmail),
+              showCloseButton: false,
+              onSent: onHelpSent
+            }, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(UiSendEmailModal, {
+                recipient: unref(salesEmail),
+                showCloseButton: false,
+                onSent: onHelpSent
+              }, null, 8, ["recipient"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(UiModal, {
+        visible: showRateFeedback.value,
+        "with-backdrop": true,
+        "close-on-backdrop": true,
+        "close-on-esc": true,
+        "show-close-button": true,
+        "close-button-label": "Fechar",
+        "aria-label": "Avalia-nos — Enviar feedback",
+        panelClass: "w-full max-w-md p-4 bg-white/95 dark:bg-neutral-900/90 backdrop-blur-md",
+        onClose: () => showRateFeedback.value = false
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(UiSendEmailModal, {
+              recipient: unref(salesEmail),
+              showCloseButton: false,
+              onSent: onHelpSent
+            }, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(UiSendEmailModal, {
+                recipient: unref(salesEmail),
+                showCloseButton: false,
+                onSent: onHelpSent
+              }, null, 8, ["recipient"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div><div id="myTabContent" data-v-8c4db47f><div class="${ssrRenderClass(["rounded-lg bg-gray-50 p-4 dark:bg-gray-800", unref(activeTab) === "login" ? "" : "hidden"])}" id="login" role="tabpanel" aria-labelledby="login-tab" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_LoginForm, { onUserNotRegistered }, null, _parent));
+      _push(`</div><div class="${ssrRenderClass(["rounded-lg bg-gray-50 p-4 dark:bg-gray-800", unref(activeTab) === "register" ? "" : "hidden"])}" id="register" role="tabpanel" aria-labelledby="register-tab" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_RegisterForm, null, null, _parent));
+      _push(`</div><div class="${ssrRenderClass(["rounded-lg bg-gray-50 p-4 dark:bg-gray-800", unref(activeTab) === "register-user" ? "" : "hidden"])}" id="register-user" role="tabpanel" aria-labelledby="register-user-tab" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UserRegisterForm, null, null, _parent));
+      _push(`</div></div>`);
+      _push(ssrRenderComponent(UiModal, {
+        visible: unref(showRegisterHint),
+        onClose: unref(closeRegisterHint),
+        "aria-label": "Aviso de Cadastro",
+        panelClass: "w-full max-w-md p-4",
+        showCloseButton: false
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="text-center" data-v-8c4db47f${_scopeId}><p class="text-lg font-semibold mb-2" data-v-8c4db47f${_scopeId}>Você precisa se cadastrar antes!</p><p class="text-sm text-neutral-600 dark:text-neutral-300 mb-4" data-v-8c4db47f${_scopeId}>Use a aba &quot;Cadastro de Usuário&quot; para criar seu acesso.</p><div class="mt-2 flex justify-center" data-v-8c4db47f${_scopeId}>`);
+            _push2(ssrRenderComponent(RainbowButton, {
+              type: "button",
+              "data-testid": "go-to-register",
+              "aria-label": "Ir para formulário de cadastro",
+              onClick: onGoToRegisterClick,
+              class: "attention-btn !text-black dark:!text-white"
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(` Ir para cadastro `);
+                } else {
+                  return [
+                    createTextVNode(" Ir para cadastro ")
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</div></div>`);
+          } else {
+            return [
+              createVNode("div", { class: "text-center" }, [
+                createVNode("p", { class: "text-lg font-semibold mb-2" }, "Você precisa se cadastrar antes!"),
+                createVNode("p", { class: "text-sm text-neutral-600 dark:text-neutral-300 mb-4" }, 'Use a aba "Cadastro de Usuário" para criar seu acesso.'),
+                createVNode("div", { class: "mt-2 flex justify-center" }, [
+                  createVNode(RainbowButton, {
+                    type: "button",
+                    "data-testid": "go-to-register",
+                    "aria-label": "Ir para formulário de cadastro",
+                    onClick: onGoToRegisterClick,
+                    class: "attention-btn !text-black dark:!text-white"
+                  }, {
+                    default: withCtx(() => [
+                      createTextVNode(" Ir para cadastro ")
+                    ]),
+                    _: 1
+                  })
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<div class="mt-6 border-t pt-6" data-v-8c4db47f><div class="flex items-center justify-between" data-v-8c4db47f><h3 class="text-base font-semibold" data-v-8c4db47f>Avalia-nos</h3><div class="flex items-center gap-1" aria-label="Avaliação" data-v-8c4db47f><!--[-->`);
+      ssrRenderList(5, (n) => {
+        _push(`<button type="button"${ssrRenderAttr("aria-label", `Dar ${n} estrela(s)`)} class="${ssrRenderClass(["transition-colors", hoverRating.value >= n || rating.value >= n ? "text-yellow-400" : "text-gray-400"])}" data-v-8c4db47f>★</button>`);
+      });
+      _push(`<!--]--></div></div><p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300" data-v-8c4db47f>Sua opinião nos ajuda a melhorar.</p><div class="mt-4 flex gap-2" data-v-8c4db47f>`);
+      _push(ssrRenderComponent(_component_UiButton, {
+        variant: "outline",
+        size: "sm",
+        onClick: ($event) => showRateFeedback.value = true
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Enviar feedback`);
+          } else {
+            return [
+              createTextVNode("Enviar feedback")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<a${ssrRenderAttr("href", googleReviewUrl)} target="_blank" rel="noopener" class="inline-flex items-center rounded-lg border px-3 py-2 text-sm transition-colors border-green-300 text-green-700 hover:bg-green-50 dark:border-green-600 dark:text-green-400" data-v-8c4db47f>Avaliar no Google</a></div></div></div></div>`);
+    };
+  }
+});
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/login.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const login = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-8c4db47f"]]);
+
+export { login as default };
+//# sourceMappingURL=login-CDQC_uyV.mjs.map

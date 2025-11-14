@@ -1,0 +1,409 @@
+[
+  {
+    "id": "TC001",
+    "title": "Product search and filter returns correct results",
+    "description": "Verify that the product search and category filters return correct product lists within 1 second for a medium dataset.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the main catalog page."
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid search keyword in the search box."
+      },
+      {
+        "type": "action",
+        "description": "Apply category filters and other available filters on the sidebar."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that filtered products are displayed in a grid with correct pagination."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the filtering and search results are returned within 1 second."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the neon green glow is visible behind the product grid but does not block interaction."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Add and remove products in comparison panel",
+    "description": "Verify products can be added to and removed from the comparison panel without breaking layout and that it works well on mobile.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the product catalogue page."
+      },
+      {
+        "type": "action",
+        "description": "Add multiple products to the comparison panel using the provided UI control."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the products appear in the comparison sidebar without layout issues."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the dedicated product comparison page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify detailed product specifications are displayed correctly for all selected products."
+      },
+      {
+        "type": "action",
+        "description": "Remove some products from the comparison."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the layout adapts without breaking and the removed products no longer appear."
+      },
+      {
+        "type": "action",
+        "description": "Test the above on a mobile viewport."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the layout remains usable and content is not cutoff or overlapping."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Manage cart modal: add, modify, remove, clear items",
+    "description": "Verify user can add products to the cart, adjust quantities, add observations, remove single items, and clear the cart without affecting other items.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to product catalog or comparison page."
+      },
+      {
+        "type": "action",
+        "description": "Add multiple products to the cart."
+      },
+      {
+        "type": "action",
+        "description": "Open the cart modal."
+      },
+      {
+        "type": "action",
+        "description": "Adjust quantity of one product."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify quantity is updated correctly and total price adjusts accordingly."
+      },
+      {
+        "type": "action",
+        "description": "Add an observation note for a product."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the note is saved and visible in the cart modal."
+      },
+      {
+        "type": "action",
+        "description": "Remove a single item from the cart."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify other items remain unaffected and removal updates cart correctly."
+      },
+      {
+        "type": "action",
+        "description": "Use the clear cart button to remove all items."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart is empty."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "PDF generation and email sending with observations block",
+    "description": "Verify that order PDF is generated with a green highlighted observations block with correct styles and can be downloaded and sent by email successfully.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Add products with observations to the cart."
+      },
+      {
+        "type": "action",
+        "description": "Generate a PDF order document from the cart."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify PDF contains all products and the observation block has green background, rounded corners, correct padding and spacing."
+      },
+      {
+        "type": "action",
+        "description": "Download the PDF and verify it opens and matches UI."
+      },
+      {
+        "type": "action",
+        "description": "Use the send order email feature with the generated PDF attached."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify email is successfully sent and the attachment is correct."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "User authentication: login, registration, profile access",
+    "description": "Verify that user login, user and company registration, and profile page work securely with server-side validation.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page."
+      },
+      {
+        "type": "action",
+        "description": "Attempt login with valid credentials."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify successful login and access to personalized features."
+      },
+      {
+        "type": "action",
+        "description": "Logout and navigate to registration forms."
+      },
+      {
+        "type": "action",
+        "description": "Attempt user registration with valid data."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify registration success and new user can login."
+      },
+      {
+        "type": "action",
+        "description": "Attempt company registration with valid data."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify company is registered successfully."
+      },
+      {
+        "type": "action",
+        "description": "Attempt login with invalid credentials."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify server-side validation rejects invalid data and shows correct error messages."
+      },
+      {
+        "type": "action",
+        "description": "Access profile page after login."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify profile data is displayed and can be updated."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Internationalization: multi-language support and UI switching",
+    "description": "Verify that UI text switches correctly between supported languages using JSON locale files and that language changes persist during navigation.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to any page of the platform."
+      },
+      {
+        "type": "action",
+        "description": "Switch language via the language selector UI."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all visible text updates to the selected language."
+      },
+      {
+        "type": "action",
+        "description": "Navigate between pages."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify selected language persists and UI remains translated."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Theme toggle: light and dark modes with visual effects",
+    "description": "Verify that user can switch between light and dark themes and that visual effects such as neon, shimmer, and ripple adjust accordingly.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to any page."
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme between light and dark using theme switch UI."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify UI colors update for light and dark modes."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify neon glow, shimmer effects, and ripple buttons adapt their appearances to the active theme."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Comparison sidebar collapse button pulses neon green when collapsed",
+    "description": "Verify that the comparison panel collapse button shows a neon green pulsing effect when collapsed and restores normal state when expanded.",
+    "category": "ui",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Add at least one product to the comparison panel."
+      },
+      {
+        "type": "action",
+        "description": "Collapse the comparison sidebar using the collapse button."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the collapse button pulses with neon green effect."
+      },
+      {
+        "type": "action",
+        "description": "Expand the comparison sidebar."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the collapse button pulsing effect disappears."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Modals close on ESC and have visible focus for accessibility",
+    "description": "Verify that modals including cart and login close when pressing ESC key and that they show visible focus outlines for accessible keyboard navigation.",
+    "category": "ui",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the cart modal."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal has visible focus outlines on interactive elements."
+      },
+      {
+        "type": "action",
+        "description": "Press ESC key."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the modal closes."
+      },
+      {
+        "type": "action",
+        "description": "Open the login modal (if separate) or login page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify visible focus outlines on form inputs."
+      },
+      {
+        "type": "action",
+        "description": "Press ESC key."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login modal closes or focus returns appropriately."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Company search by CNPJ returns correct company data",
+    "description": "Verify that searching for a company by valid CNPJ returns accurate company information and invalid CNPJ input handles errors gracefully.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the company search interface."
+      },
+      {
+        "type": "action",
+        "description": "Input a valid CNPJ number."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the correct company information is returned and displayed."
+      },
+      {
+        "type": "action",
+        "description": "Input an invalid or malformed CNPJ."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that an appropriate error message is shown and no crash occurs."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Performance and responsiveness on various devices and screen sizes",
+    "description": "Verify the application loads quickly and UI elements adapt properly across desktop, tablet, and mobile devices maintaining usability and accessibility.",
+    "category": "performance",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the application on a desktop browser."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page loads within acceptable time thresholds and UI components render correctly."
+      },
+      {
+        "type": "action",
+        "description": "Resize browser or use device emulation to simulate tablet viewport."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify UI adjusts properly with no layout breakage."
+      },
+      {
+        "type": "action",
+        "description": "Simulate mobile viewport or test on real mobile device."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that navigation, product grids, comparison panel, and modals work with adaptation for smaller screen sizes."
+      }
+    ]
+  }
+]

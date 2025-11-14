@@ -1,0 +1,40 @@
+import { ref, computed } from 'vue';
+
+const MAX_ITEMS = 3;
+const items = ref([]);
+function add(product) {
+  if (items.value.find((p) => p.id === product.id)) {
+    return { ok: false, reason: "exists" };
+  }
+  if (items.value.length >= MAX_ITEMS) {
+    return { ok: false, reason: "full" };
+  }
+  items.value.push(product);
+  return { ok: true };
+}
+function remove(id) {
+  items.value = items.value.filter((p) => p.id !== id);
+}
+function clear() {
+  items.value = [];
+}
+const count = computed(() => items.value.length);
+const isFull = computed(() => count.value >= MAX_ITEMS);
+const canCompare = computed(() => count.value >= 2);
+const has = (id) => items.value.some((p) => p.id === id);
+function useCompare() {
+  return {
+    items,
+    add,
+    remove,
+    clear,
+    count,
+    isFull,
+    canCompare,
+    has,
+    MAX_ITEMS
+  };
+}
+
+export { useCompare as u };
+//# sourceMappingURL=useCompare-CHcHewrE.mjs.map

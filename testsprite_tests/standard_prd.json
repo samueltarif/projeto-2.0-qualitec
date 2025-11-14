@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "project": "Catálogo Digital Nuxt 4",
+    "date": "2025-11-04",
+    "prepared_by": "Software Development Manager"
+  },
+  "product_overview": "Catálogo Digital é uma plataforma responsiva construída em Nuxt 4 que permite a busca, filtragem, comparação e montagem de pedidos de produtos técnicos, com funcionalidades integradas para geração e envio de pedidos em PDF, suporte multi-idioma e uma interface moderna com tema claro/escuro.",
+  "core_goals": [
+    "Prover um catálogo técnico com filtros avançados e visualização fácil.",
+    "Permitir comparação detalhada de especificações entre produtos.",
+    "Facilitar a montagem e gestão de pedidos via carrinho integrado.",
+    "Gerar documentos PDF de pedidos com layout específico e enviar por e-mail.",
+    "Garantir autenticação segura e gestão de perfil para usuários e empresas.",
+    "Oferecer uma experiência multilingue com suporte a i18n.",
+    "Garantir performance rápida, responsividade e acessibilidade em dispositivos variados."
+  ],
+  "key_features": [
+    "Página principal com grid de produtos e filtros dinâmicos por categoria com busca textual.",
+    "Painel lateral e página dedicada para comparação detalhada de produtos com especificações e ações.",
+    "Modal de carrinho para ajuste de quantidades, adicionar observações, remoção e limpeza completa.",
+    "Funcionalidade de geração e download de pedidos em PDF com bloco de observações destacado em verde e envio por e-mail.",
+    "Sistema de autenticação com login, registro de usuário e empresa, e perfil básico.",
+    "Internacionalização com arquivos JSON de tradução e suporte a múltiplos idiomas.",
+    "Componentes avançados de UI com efeitos visuais como neon, shimmer e ripple.",
+    "Integração para busca de empresas por CNPJ.",
+    "Backend robusto via rotas Nitro para produtos, usuários, empresas, pedidos e serviços externos."
+  ],
+  "user_flow_summary": [
+    "Usuário busca e filtra produtos no catálogo, visualiza resultados em grid com paginação e glow neon verde ao fundo.",
+    "Usuário adiciona produtos para comparação usando painel lateral; navega para a página de comparação para análise detalhada.",
+    "Usuário monta o carrinho a partir do catálogo ou comparação, ajusta quantidades e notas, remove itens, limpa carrinho e retorna ao catálogo.",
+    "Usuário gera o PDF do pedido com layout personalizado e envia o pedido por e-mail com anexo.",
+    "Usuário realiza login ou cadastro de conta e empresa para acessar funcionalidades personalizadas.",
+    "Usuário alterna temas e idiomas para uma experiência personalizada e acessível."
+  ],
+  "validation_criteria": [
+    "Filtros e busca retornam resultados em menos de 1 segundo para dataset médio.",
+    "Comparação adiciona e remove produtos sem quebrar layout, especialmente em mobile.",
+    "Remoção individual de itens do carrinho não afeta outros itens.",
+    "PDFs apresentam bloco de observações com fundo verde, bordas arredondadas, padding interno e espaçamento correto.",
+    "Glow neon verde deve ser visível atrás do grid de produtos sem impedir interações.",
+    "Botão de colapso do painel de comparação pulsa em neon verde quando colapsado.",
+    "Autenticação realiza validações server-side e mantém segurança dos dados do usuário.",
+    "Performance e responsividade devem garantir carregamento rápido e boa usabilidade.",
+    "Modais fecham via tecla Esc e possuem foco visível para acessibilidade."
+  ],
+  "code_summary": {
+    "tech_stack": [
+      "Nuxt 4",
+      "Vue 3",
+      "TypeScript",
+      "Nitro (Nuxt server routes)",
+      "Tailwind CSS",
+      "UnoCSS",
+      "i18n (JSON locales)",
+      "Node.js",
+      "SQL (PostgreSQL scripts)",
+      "Ngrok (opcional para túnel)"
+    ],
+    "features": [
+      {
+        "name": "Catálogo de Produtos",
+        "description": "Página principal de listagem com filtros, paginação e grid de produtos.",
+        "files": [
+          "app/pages/produtos.vue",
+          "app/components/ProductsGrid.vue",
+          "app/components/CatalogFilterSidebar.vue"
+        ]
+      },
+      {
+        "name": "Comparação de Produtos",
+        "description": "Painel lateral e página de comparação por especificação e ações por item.",
+        "files": [
+          "app/components/CompareSidebar.vue",
+          "app/components/UiComparePanel.vue",
+          "app/pages/comparar.vue"
+        ]
+      },
+      {
+        "name": "Carrinho e Pedido",
+        "description": "Modal de carrinho com quantidade, observações, remoção e limpeza.",
+        "files": [
+          "app/components/CartModal.vue",
+          "app/components/HeaderButtons.vue",
+          "app/components/UiAddButton.vue",
+          "app/components/UiRemoveButton.vue",
+          "app/components/UiNextButton.vue",
+          "app/components/UiPrevButton.vue"
+        ]
+      },
+      {
+        "name": "Autenticação e Perfil",
+        "description": "Login, registro, perfil de usuário e empresa.",
+        "files": [
+          "app/pages/login.vue",
+          "app/components/LoginForm.vue",
+          "app/components/RegisterForm.vue",
+          "server/api/login.ts",
+          "server/api/register-user.ts",
+          "server/api/register-company.ts"
+        ]
+      },
+      {
+        "name": "Envio e Download de Pedido (PDF)",
+        "description": "Geração de PDF e envio por e-mail com bloco de Observações em verde.",
+        "files": [
+          "server/api/download-order.ts",
+          "server/api/send-email.ts",
+          "public/arquivos pdf"
+        ]
+      },
+      {
+        "name": "API de Produtos",
+        "description": "Consultas de produtos, distinct e facet-counts.",
+        "files": [
+          "server/api/produtos",
+          "server/api/table-schema.ts",
+          "server/api/list-tables.ts"
+        ]
+      },
+      {
+        "name": "Integração CNPJ",
+        "description": "Busca de empresa por CNPJ.",
+        "files": [
+          "server/api/get-company-by-cnpj.ts",
+          "app/composables/useCnpj.ts"
+        ]
+      },
+      {
+        "name": "Composables de Estado",
+        "description": "Gerenciamento de carrinho, comparação, favoritos, tema, overlay e perfil.",
+        "files": [
+          "app/composables/useCart.ts",
+          "app/composables/useCompare.ts",
+          "app/composables/useFavorites.ts",
+          "app/composables/useOverlay.ts",
+          "app/composables/useTheme.ts",
+          "app/composables/useUserProfile.ts"
+        ]
+      },
+      {
+        "name": "Internacionalização (i18n)",
+        "description": "Traduções em múltiplos idiomas via arquivos JSON.",
+        "files": [
+          "locales",
+          "i18n/locales"
+        ]
+      },
+      {
+        "name": "Configuração do Projeto",
+        "description": "Configurações de build, estilos e utilitários do app.",
+        "files": [
+          "nuxt.config.ts",
+          "tailwind.config.js",
+          "unocss.config.ts",
+          "app/app.config.ts",
+          "app/app.vue",
+          "lib/utils.ts"
+        ]
+      },
+      {
+        "name": "Efeitos Visuais e UI Avançada",
+        "description": "Componentes visuais e botões com efeitos (neon, shimmer, ripple).",
+        "files": [
+          "app/components/FallingStarsBg.vue",
+          "app/components/SilkBg.vue",
+          "app/components/ShaderToy.vue",
+          "app/components/ShimmerButton.vue",
+          "app/components/RippleButton.vue",
+          "app/components/GradientButton.vue",
+          "app/components/ProductsGrid.vue",
+          "app/components/CompareSidebar.vue"
+        ]
+      },
+      {
+        "name": "Páginas Base",
+        "description": "Home, index raiz, demo mobile e erro.",
+        "files": [
+          "app/pages/index.vue",
+          "pages/index.vue",
+          "app/pages/demo-mobile.vue",
+          "error.vue"
+        ]
+      },
+      {
+        "name": "Scripts de Banco de Dados",
+        "description": "Estruturas e dados para produtos, empresas, favoritos e usuários.",
+        "files": [
+          "db/qualitec_catalogos/produtos.sql",
+          "db/qualitec_catalogos/empresas.sql",
+          "db/qualitec_catalogos/favoritos.sql",
+          "db/qualitec_catalogos/usuarios.sql",
+          "scripts/run_sql.mjs",
+          "scripts/import_produtos.py"
+        ]
+      },
+      {
+        "name": "Utilidades e Integrações",
+        "description": "Acesso a serviços externos e utilidades.",
+        "files": [
+          "server/api/imgbb.ts",
+          "server/api/test-connection.ts",
+          "public/images/logo.png"
+        ]
+      }
+    ]
+  }
+}

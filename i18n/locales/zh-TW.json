@@ -1,0 +1,51 @@
+{
+  "header": {
+    "toggle_theme": "切換主題",
+    "profile": "個人資料",
+    "favorites": "收藏",
+    "language": "語言"
+  },
+  "login": {
+    "tabs": {
+      "login": "登入",
+      "register_company": "公司註冊",
+      "register_user": "使用者註冊"
+    },
+    "help": {
+      "title": "說明 — 使用者註冊",
+      "section_title": "傳送商務郵件",
+      "support_message": "如有疑問，請聯繫我們的業務團隊。我們會在一個工作日內回覆。",
+      "recipient": "收件者：{email}"
+    },
+    "labels": {
+      "title": "標題",
+      "body": "郵件內容",
+      "email": "電子郵件",
+      "cnpj": "CNPJ"
+    },
+    "buttons": {
+      "send_email": "傳送郵件",
+      "close": "關閉",
+      "sign_in": "登入",
+      "about": "關於 Qualitec",
+      "help": "說明"
+    },
+    "messages": {
+      "success_email_sent": "郵件已成功傳送！",
+      "fill_subject_body": "請填寫標題與內容。",
+      "error_sending_email": "傳送郵件時發生錯誤。",
+      "failed": "傳送失敗。"
+    }
+  },
+  "comparar": {
+    "actions": {
+      "delete": "刪除",
+      "remove": "移除"
+    }
+  },
+  "general": {
+    "remove": "移除",
+    "delete": "刪除",
+    "add": "新增"
+  }
+}

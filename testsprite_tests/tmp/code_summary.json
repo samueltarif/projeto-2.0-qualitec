@@ -1,0 +1,97 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "Vue 3",
+    "Nuxt 4",
+    "Nitro 2",
+    "Vite 7",
+    "Tailwind CSS",
+    "UnoCSS",
+    "MySQL (mysql2/promise)",
+    "Node.js"
+  ],
+  "features": [
+    {
+      "name": "Catálogo de Produtos",
+      "description": "Página de catálogo com filtros, paginação, grid de produtos e comparação.",
+      "files": [
+        "app/pages/produtos.vue",
+        "app/components/ProductsGrid.vue",
+        "app/components/CatalogFilterSidebar.vue",
+        "app/components/CompareSidebar.vue",
+        "app/components/ProductActionButtons.vue"
+      ]
+    },
+    {
+      "name": "Busca no Banco de Dados",
+      "description": "Endpoints que consultam MySQL para listar, contar e detalhar produtos.",
+      "files": [
+        "server/api/produtos/search.ts",
+        "server/api/produtos/distinct.ts",
+        "server/api/produtos/details.ts",
+        "server/api/produtos/get-by-ids.ts",
+        "server/api/produtos/facet-counts.ts"
+      ]
+    },
+    {
+      "name": "Login com Empresa",
+      "description": "Autenticação por email e CNPJ com rate limiting, validações e MySQL.",
+      "files": [
+        "server/api/login.ts",
+        "app/components/LoginForm.vue",
+        "app/pages/login.vue"
+      ]
+    },
+    {
+      "name": "Carrinho e Download de Pedido",
+      "description": "Carrinho de compras, geração de PDF e ZIP via endpoint.",
+      "files": [
+        "app/components/CartModal.vue",
+        "server/api/download-order.ts",
+        "app/components/UiDownloadButton.vue"
+      ]
+    },
+    {
+      "name": "Favoritos",
+      "description": "Salvar e listar favoritos por usuário/empresa.",
+      "files": [
+        "server/api/favoritos/toggle.ts",
+        "server/api/favoritos/list.ts",
+        "server/api/favoritos/alias.ts"
+      ]
+    },
+    {
+      "name": "Chat de Busca Técnica",
+      "description": "Chat com IA (Gemini) e fallback heurístico; aplica filtros e atualiza catálogo em tempo real.",
+      "files": [
+        "server/api/chat.post.ts",
+        "app/pages/produtos.vue",
+        "nuxt.config.ts"
+      ]
+    },
+    {
+      "name": "Perfil do Usuário",
+      "description": "Componentes de perfil com correção de hydration.",
+      "files": [
+        "app/components/ProfileIconButton.vue",
+        "app/components/ProfileModal.vue"
+      ]
+    },
+    {
+      "name": "Plugins e Diretivas",
+      "description": "Registro da diretiva de máscara e temas CSS.",
+      "files": [
+        "app/plugins/mask.ts",
+        "app/assets/css/theme.css",
+        "app/assets/css/main.css"
+      ]
+    },
+    {
+      "name": "Configuração e Runtime",
+      "description": "Configuração Nuxt, runtimeConfig com chaves privadas e sinônimos do chat.",
+      "files": [
+        "nuxt.config.ts"
+      ]
+    }
+  ]
+}
